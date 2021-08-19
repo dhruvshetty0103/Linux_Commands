@@ -1,0 +1,56 @@
+﻿Q1
+a)$cat passwd
+b)$cat passwd | awk -F: '{print $1}'
+c)$cat passwd | awk -F: '{if ($3>1000) print $1,$2,$3}'
+d)$cat passwd | awk -F: '{if ($3>1000) print $6}'
+
+
+Q2
+a)$touch abc.txt def.txt ghi.txt jkl.txt
+b)$ls *.txt
+c)$ ls *.txt | awk -F. '{print $1}'
+d)$ for file in `ls *.txt`; do folderName=`echo $file | awk -F. '{print $1}'`; mkdir $folderName; done
+e)$ for file in `ls *.txt`; do folderName=`echo $file | awk -F. '{print $1}'`;rm -r $folderName; mkdir $folderName; mv $file $folderName; done
+
+
+Q3
+a)$ touch abc.log.1 def.log.1 ghi.log.1 jkl.log.1 mno.log.1
+b)$ ls *.log.1
+c)$ ls *.log.1 | awk -F. '{print $1,$2,$3}'
+d)$ date
+e)$ for file in `ls *.log.1`; do baseName=`echo $file | awk -F. '{print $1}'`
+> dt=`date +%d%m%y | awk '{print $0}'`
+> mv $file $baseName$dt'.log'
+> done
+
+
+Q6
+b)Hello, world!
+
+
+Q7
+$  [ -z $usersecret ] && export usersecret="dH34xJaa23" || echo "already set"
+
+
+Q8
+dhruv@DESKTOP-9BV1RA8:/var/log$  grep -i "systemd" /var/log/*
+
+
+Q9
+a)$ watch -n 1 'ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head'
+
+
+Q14
+1)dhruv@DESKTOP-9BV1RA8:~$ cat data.csv | awk '$4>10000 {print$2 " " $7}
+a)dhruv@DESKTOP-9BV1RA8:~$ cat data.csv | awk '$4>10000 {print$0}'
+b)dhruv@DESKTOP-9BV1RA8:~$ cat data.csv | awk '$4>10000 {print$0}'| awk '{print $2"    "$7}'
+2)dhruv@DESKTOP-9BV1RA8:~$ cat data.csv | grep CAPTAIN|awk '{sum=sum+$7} END{print sum}'
+a)dhruv@DESKTOP-9BV1RA8:~$ cat data.csv | grep CAPTAIN
+b)dhruv@DESKTOP-9BV1RA8:~$ cat data.csv | grep CAPTAIN|awk '{sum=sum+$7} END{print sum}'
+3)dhruv@DESKTOP-9BV1RA8:~$ cat data.csv | awk '$5>7000 && $5<10000 {print $3 " " $5}'
+
+
+Q15
+dhruv@DESKTOP-9BV1RA8:~$ file1="def"
+dhruv@DESKTOP-9BV1RA8:~$ file2="abc"
+dhruv@DESKTOP-9BV1RA8:~$ diff $file1 $file2
